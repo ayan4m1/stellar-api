@@ -17,7 +17,3 @@ export const http = {
   port: parseInt(process.env.STEL_HTTP_PORT || '8080', 10),
   corsOrigin: process.env.STEL_HTTP_CORS_ORIGIN
 };
-
-export const site = {
-  name: process.env.STEL_SITE_NAME || 'Stellar'
-};
