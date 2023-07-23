@@ -10,6 +10,13 @@ See the [compose](https://github.com/orphic-inc/stellar-compose) repository for 
 
 * Node.js (only LTS version supported)
 
+## Development Environment
+
+    git clone https://github.com/orphic-inc/stellar-api.git api
+    cd api
+    npm i
+    npm start
+
 ## Configuration
 
 | Variable              | Description                  | Default   |
