@@ -21,8 +21,8 @@ See the [compose](https://github.com/orphic-inc/stellar-compose) repository for 
 
 | Variable              | Description                  | Default   |
 |-----------------------|------------------------------|-----------|
-| STEL_AUTH_JWT_SECRET  | Secret for signing JWTs      | undefined |
-| STEL_LOG_LEVEL        | Winston log level            | info      |
-| STEL_LOG_TIME_FMT     | Winston log timestamp format | undefined |
-| STEL_HTTP_PORT        | API listening port           | 8080      |
-| STEL_HTTP_CORS_ORIGIN | API CORS origin to whitelist | undefined |
+| STELLAR_AUTH_JWT_SECRET  | Secret for signing JWTs      | undefined |
+| STELLAR_LOG_LEVEL        | Winston log level            | info      |
+| STELLAR_LOG_TIME_FMT     | Winston log timestamp format | undefined |
+| STELLAR_HTTP_PORT        | API listening port           | 8080      |
+| STELLAR_HTTP_CORS_ORIGIN | API CORS origin to whitelist | undefined |
