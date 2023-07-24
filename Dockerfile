@@ -1,4 +1,4 @@
-FROM node:lts-alpine
+FROM --platform=$BUILDPLATFORM node:lts-alpine
 
 WORKDIR /usr/src/stellar-api
 
