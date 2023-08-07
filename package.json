@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "description": "Stellar API",
-  "author": "ayan4m1 <andrew@bulletlogic.com>",
+  "author": "ayan4m1 <andrew@bulletlogic.com>, Kyle O'Brien <obrienk@webbhost.net>",
   "license": "MIT",
   "type": "module",
   "scripts": {
