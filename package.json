@@ -6,12 +6,22 @@
   "author": "ayan4m1 <andrew@bulletlogic.com>, Kyle O'Brien <obrienk@webbhost.net>",
   "license": "MIT",
   "type": "module",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "ts-node src/index.ts",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts"
   },
   "dependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.6.0",
+    "@types/winston": "^2.4.4",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "sequelize": "^6.33.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2",
     "winston": "^3.10.0"
   },
   "devDependencies": {
@@ -23,6 +33,7 @@
     "eslint-plugin-prettier": "^5.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
+    "nodemon": "^3.0.1",
     "prettier": "^3.0.0"
   }
 }
