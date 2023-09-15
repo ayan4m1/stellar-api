@@ -1,5 +1,4 @@
 import winston from 'winston';
-
 import { logging as config } from './config.js';
 
 const { Container, format, transports } = winston;
@@ -31,7 +30,6 @@ const createLogger = (category: any, categoryLabel: any) => {
 
   return container.get(category);
 };
-
 export const getLogger = (category, categoryLabel = category) => {
   if (!loggers[category]) {
     loggers[category] = createLogger(category, categoryLabel);

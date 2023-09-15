@@ -9,3 +9,42 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id Int @id @default(autoincrement())
+  userSettingsId Int
+  userSettings UserSettings @relation(fields: [userSettingsId], references: [id])
+  username String @unique
+  email String @unique
+  password String
+  avatar String?
+  userRankId Int
+  inviteCount Int @default(0)
+  lastLogin DateTime?
+  dateRegistered DateTime @default(now())
+  disabled Boolean @default(false)
+  isArtist Boolean @default(false)
+  isDonor Boolean @default(false)
+  profileId Int
+  canDownload Boolean @default(true)
+  adminComment String?
+  banDate DateTime?
+  banReason String?
+  warned DateTime?
+  warnedTimes Int default(0)
+  communityPass String
+  settingsId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userRank UserRank @relation(fields: [userRankId], references: [id])
+  profile Profile @relation(fields: [profileId], references: [id])
+  settings UserSettings @relation(fields: [userSettingsId], references: [id])
+  invites Invite[]
+  forumPosts ForumPost[]
+}
+
+model UserSettings {
+  id Int @id @default(autoincrement())
+  
+}
