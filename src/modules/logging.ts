@@ -8,8 +8,9 @@ const { combine, label, prettyPrint, printf, timestamp } = format;
 const loggers = {};
 const container = new Container();
 
-const createLogger = (category, categoryLabel) => {
-  let formatter = (data) => `[${data.level}][${data.label}] ${data.message}`;
+const createLogger = (category: any, categoryLabel: any) => {
+  let formatter = (data: any) =>
+    `[${data.level}][${data.label}] ${data.message}`;
   const formatters = [label({ label: categoryLabel })];
 
   if (config.timestampFormat) {

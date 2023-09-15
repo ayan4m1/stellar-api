@@ -11,10 +11,8 @@ const log = getLogger('app');
 app.get('/', (req, res) => res.send('API Running'));
 
 // handle any downstream errors
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  console.log('Error', err.message);
-  console.log(err, 'ln 17 server.js');
+app.use((err: String, res: any) => {
+  console.log(err, 'ln 15 index.ts');
   res.status(500).send('Server Error');
 });
 
