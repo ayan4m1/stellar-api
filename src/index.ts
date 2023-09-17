@@ -3,6 +3,9 @@ import express from 'express';
 import { getLogger } from './modules/logging.ts';
 import { http } from './modules/config.ts';
 
+import * as dotenv from 'dotenv';
+dotenv.config({ path: __dirname + '../.env' });
+
 const isProduction = process.env.NODE_ENV === 'production';
 const app = express();
 const log = getLogger('app');
