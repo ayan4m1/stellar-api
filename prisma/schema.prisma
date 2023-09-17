@@ -7,43 +7,23 @@ datasource db {
   url      = env("STELLAR_PSQL_URI")
 }
 
-model User {
+model Consumer {
   id Int @id @default(autoincrement())
-  userSettingsId Int
-  userSettings UserSettings @relation(fields: [userSettingsId], references: [id])
-  username String @unique
-  email String @unique
-  password String
-  avatar String?
-  userRankId Int
-  inviteCount Int @default(0)
-  lastLogin DateTime?
-  dateRegistered DateTime @default(now())
-  disabled Boolean @default(false)
-  isArtist Boolean @default(false)
-  isDonor Boolean @default(false)
-  profileId Int
-  canDownload Boolean @default(true)
-  contributorId Int
-  consumerId Int
-  adminComment String?
-  banDate DateTime?
-  banReason String?
-  warned DateTime?
-  warnedTimes Int default(0)
-  communityPass String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 
-  userRank UserRank @relation(fields: [userRankId], references: [id])
-  profile Profile @relation(fields: [profileId], references: [id])
-  contributor Contributor @relation(fields: [contributorId], references: [id])
-  consumer Consumer @relation(fields: [consumerId], references: [id])
-  invites Invite[]
-  forumPosts ForumPost[]
 }
 
-model UserSettings {
+model Contributor {
+  id Int @id @default(autoincrement())
+
+}
+
+model Invite {
+  id Int @id @default(autoincrement())
+  userId Int
+  inviter User @relation(fields: [userId], references: [id])
+}
+
+model Profile {
   id Int @id @default(autoincrement())
 
 }
@@ -55,7 +35,49 @@ model Release {
   releaseDate DateTime
   releaseType ReleaseType
   size Int
-  contributors Contributor[]
-  consumers Consumer[]
+  contributorId Int
+  consumerId Int
+  contributors Contributor[] @relation(fields: [contributorId], references: [id])
+  consumers Consumer[] @relation(fields: [contributorId], references: [id])
   releaseYear Int
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  userSettingsId Int
+  userSettings UserSettings @relation(fields: [userSettingsId], references: [id])
+  username String @unique
+  email String @unique
+  password String
+  avatar String?
+  userRankId Int
+  userRank UserRank @relation(fields: [userRankId], references: [id])
+  inviterId Int
+  invites Invite[] @relation(fields: [inviterId], references: [id])
+  inviteCount Int @default(0)
+  lastLogin DateTime?
+  dateRegistered DateTime @default(now())
+  disabled Boolean @default(false)
+  isArtist Boolean @default(false)
+  isDonor Boolean @default(false)
+  profileId Int
+  profile Profile @relation(fields: [profileId], references: [id])
+  canDownload Boolean @default(true)
+  consumerId Int
+  consumer Consumer @relation(fields: [consumerId], references: [id])
+  contributorId Int
+  contributor Contributor @relation(fields: [contributorId], references: [id])
+  adminComment String?
+  banDate DateTime?
+  banReason String?
+  warned DateTime?
+  warnedTimes Int default(0)
+  communityPass String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model UserSettings {
+  id Int @id @default(autoincrement())
+
 }
