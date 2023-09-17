@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 
 import { getLogger } from './modules/logging.ts';
 import { http } from './modules/config.ts';
@@ -11,10 +11,10 @@ const app = express();
 const log = getLogger('app');
 
 // define routes
-app.get('/', (req, res) => res.send('API Running'));
+app.get('/', (req: Request, res: Response) => res.send('API Running'));
 
 // handle any downstream errors
-app.use((err: String, res: any) => {
+app.use((err: string, req: Request, res: Response) => {
   console.log(err, 'ln 15 index.ts');
   res.status(500).send('Server Error');
 });

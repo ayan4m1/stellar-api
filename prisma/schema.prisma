@@ -32,8 +32,6 @@ model Release {
   id Int @id @default(autoincrement())
   title String
   description String
-  releaseDate DateTime
-  releaseType ReleaseType
   size Int
   contributorId Int
   consumerId Int
