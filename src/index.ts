@@ -1,7 +1,7 @@
 import express from 'express';
 
-import { getLogger } from './modules/logging.js';
-import { http } from './modules/config.js';
+import { getLogger } from './modules/logging.ts';
+import { http } from './modules/config.ts';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const app = express();

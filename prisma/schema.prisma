@@ -1,13 +1,10 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("STELLAR_PSQL_URI")
 }
 
 model User {
@@ -27,24 +24,38 @@ model User {
   isDonor Boolean @default(false)
   profileId Int
   canDownload Boolean @default(true)
+  contributorId Int
+  consumerId Int
   adminComment String?
   banDate DateTime?
   banReason String?
   warned DateTime?
   warnedTimes Int default(0)
   communityPass String
-  settingsId Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   userRank UserRank @relation(fields: [userRankId], references: [id])
   profile Profile @relation(fields: [profileId], references: [id])
-  settings UserSettings @relation(fields: [userSettingsId], references: [id])
+  contributor Contributor @relation(fields: [contributorId], references: [id])
+  consumer Consumer @relation(fields: [consumerId], references: [id])
   invites Invite[]
   forumPosts ForumPost[]
 }
 
 model UserSettings {
   id Int @id @default(autoincrement())
-  
+
+}
+
+model Release {
+  id Int @id @default(autoincrement())
+  title String
+  description String
+  releaseDate DateTime
+  releaseType ReleaseType
+  size Int
+  contributors Contributor[]
+  consumers Consumer[]
+  releaseYear Int
 }
